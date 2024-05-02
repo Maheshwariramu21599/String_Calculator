@@ -1,8 +1,10 @@
 class StringCalculator
     def self.add(numbers)
-      return 0 if numbers.empty?
-
-      numbers.to_i
-      numbers.split(',').map(&:to_i).reduce(0, :+)
+        return 0 if numbers.empty?
+    
+        nums = numbers.split(/[\n,]/).map(&:to_i)
+    
+        nums.reduce(0, :+)
     end
+    
 end
