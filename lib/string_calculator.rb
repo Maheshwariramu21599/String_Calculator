@@ -9,8 +9,11 @@ class StringCalculator
             raise "negatives not allowed: #{negatives.join(', ')}"
         end
 
+        
+
+        nums.select! { |num| num <= 1000 } # Ignore numbers larger than 1000
+
         nums.reduce(0, :+)
-    
     end
     
 end
