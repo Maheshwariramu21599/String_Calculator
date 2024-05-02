@@ -43,5 +43,41 @@ RSpec.describe StringCalculator do
           expect(StringCalculator.add('2,1001,3')).to eq(5)
         end
     end
-  end
+
+    context 'with different delimiter' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//;\n1;2;3")).to eq(6)
+        end
+    end
+
+    context 'with delimiters of any length' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+        end
+    end
+  
+    context 'with multiple delimiters' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//[*][%]\n1*2%3")).to eq(6)
+        end
+    end
+  
+    context 'with multiple delimiters of different length' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//[**][%%]\n1**2%%3")).to eq(6)
+        end
+    end
+  
+    context 'with multiple custom delimiters - ;%%' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//[;][%%]\n3;6%%8")).to eq(17)
+        end
+    end
+  
+    context 'with multiple custom delimiters - &%%' do
+        it 'returns the sum' do
+          expect(StringCalculator.add("//[&][%%]\n3&6%%41")).to eq(50)
+        end
+    end
+ end
 end
